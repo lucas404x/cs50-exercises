@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Portfolio
+{% endblock %}
+
+{% block main %}
+<table class="table">
+      <tr>
+        <th scope="col">Symbol</th>
+        <th scope="col">Name</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Price</th>
+        <th scope="col">TOTAL</th>
+      </tr>
+
+      {% for value in data %}
+      <tr>
+          <td>{{ value["symbol"] }}</td>
+          <td>{{ value["name"] }}</td>
+          <td>{{ value["shares"] }}</td>
+          <td>{{ value["price"] }}</td>
+          <td>{{ value["total"] }}</td>
+      </tr>
+      {% endfor %}
+  </table>
+{% endblock %}

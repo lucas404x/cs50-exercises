@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Add cash
+{% endblock %}
+
+{% block main %}
+    <form action="/add" method="post">
+        <div class="form-group">
+            <input onchange="validateFieldNumber()" value="0" type="number" name="cash" id="cash" placeholder="Cash"
+                class="form-control">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password">
+        </div>
+        <button disabled id="submitButton" class="btn btn-primary" type="submit">Add</button>
+    </form>
+
+    <script>
+    function validateFieldNumber() {
+        const field = document.querySelector('#cash');
+        const button = document.querySelector('#submitButton');
+        if (field.value <= 0) {
+            button.disabled = true;
+        } else {
+            button.disabled = false;
+        }
+    }
+</script>
+{% endblock %}

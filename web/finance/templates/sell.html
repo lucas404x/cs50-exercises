@@ -1,0 +1,38 @@
+{% extends "layout.html "%}
+
+{% block title %}
+Sell
+{% endblock %}
+
+{% block main %}
+<form action="" method="post">
+    <div class="form-group">
+        <select name="symbols" id="symbols" class="form-control">
+            {% for symbol in symbols %}
+            {% if symbol != None %}
+            <option value="{{ symbol }}">{{ symbol }}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <input onchange="validateFieldNumber()" type="number" name="shares" id="shares"
+            class="form-control" placeholder="Shares" value="0">
+    </div>
+    <button id="submitButton" disabled type="submit" class="btn btn-primary">Sell</button>
+</form>
+
+<script>
+    function validateFieldNumber() {
+        const field = document.querySelector('#shares');
+        const button = document.querySelector('#submitButton');
+
+        if (field.value <= 0) {
+            button.disabled = true;
+        } else {
+            button.disabled = false;
+        }
+    }
+</script>
+{% endblock %}
